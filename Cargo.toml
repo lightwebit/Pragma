@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "pragma-parser",
+    "pragma-cli",
+    "src-tauri",
+]
+resolver = "2"

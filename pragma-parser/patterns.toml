@@ -1,0 +1,143 @@
+# Pragma — Pattern configuration
+# Edit this file to add/fix patterns without recompiling.
+# This file takes precedence over the embedded defaults.
+# See docs/PARSER_PATTERNS.md for full documentation.
+#
+# NOTA: Claude Code in italiano usa frasi diverse dall'inglese.
+# I path possono essere wrappati in backtick: `path/to/file.rs`
+# Il gruppo di cattura deve estrarre il path con o senza backtick.
+
+[error]
+prefixes = [
+  "Error:",
+  "error[",
+  "FAILED",
+  "panicked at",
+  "thread '",
+  "× ",
+  "✗ ",
+  "fatal:",
+  "ERROR ",
+  "Errore:",
+]
+stderr_prefix = "stderr:"
+
+[tool_use]
+prefixes = [
+  "Bash(",
+  "Read(",
+  "Write(",
+  "Edit(",
+  "Glob(",
+  "Grep(",
+  "Agent(",
+  "WebFetch(",
+  "WebSearch(",
+  "Task",
+  "<tool_use>",
+  "Tool:",
+  "Running tool:",
+]
+
+[diff]
+start_markers = ["--- a/", "+++ b/"]
+hunk_marker = "@@ "
+
+# ---------------------------------------------------------------------------
+# FILE_TOUCH patterns
+# Ordine: dal più specifico al più generico.
+# Gruppo 1 cattura il path, con o senza backtick.
+# Il path viene poi validato da is_valid_path().
+# ---------------------------------------------------------------------------
+
+# --- ITALIANO (Claude Code in lingua italiana) ---
+
+[[file_touch.patterns]]
+regex = "(?i)file creato in `([^`]+)`"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "(?i)file creato:? `?([^`\\.]+\\.[^`\\s]+)`?"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "(?i)(?:ho )?scritto (?:il file )?`([^`]+)`"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "(?i)file modificato(?: in)? `([^`]+)`"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "(?i)(?:ho )?modificato `([^`]+)`"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "(?i)(?:ho )?aggiornato `([^`]+)`"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "(?i)file eliminato `([^`]+)`"
+action = "Delete"
+
+[[file_touch.patterns]]
+regex = "(?i)(?:ho )?eliminato `([^`]+)`"
+action = "Delete"
+
+# --- GENERICO — path in backtick (qualsiasi lingua) ---
+# Cattura qualsiasi riga che menziona create/write/scritto/creato
+# seguita da un path in backtick
+
+[[file_touch.patterns]]
+regex = "(?i)(?:creat|writ|scriv|scritt).{0,30}`([^`]+)`"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "(?i)(?:modif|updat|aggiornat).{0,30}`([^`]+)`"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "(?i)(?:delet|remov|eliminat|rimoss).{0,30}`([^`]+)`"
+action = "Delete"
+
+# --- INGLESE standard ---
+
+[[file_touch.patterns]]
+regex = "(?i)created? (?:file:? )?`?([^`\n]+)`?"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "(?i)writing to:? `?([^`\n]+)`?"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "✓ [Cc]reated? `?([^`\n]+)`?"
+action = "Create"
+
+[[file_touch.patterns]]
+regex = "(?i)modif(?:ied|ying):? `?([^`\n]+)`?"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "(?i)updat(?:ed|ing):? `?([^`\n]+)`?"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "✓ [Uu]pdat(?:ed|ing) `?([^`\n]+)`?"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "✓ [Mm]odif(?:ied|ying) `?([^`\n]+)`?"
+action = "Modify"
+
+[[file_touch.patterns]]
+regex = "(?i)delet(?:ed|ing):? `?([^`\n]+)`?"
+action = "Delete"
+
+[[file_touch.patterns]]
+regex = "(?i)remov(?:ed|ing):? `?([^`\n]+)`?"
+action = "Delete"
+
+[[file_touch.patterns]]
+regex = "✓ [Dd]elet(?:ed|ing) `?([^`\n]+)`?"
+action = "Delete"

@@ -1,0 +1,63 @@
+:root {
+  /* Atom type colors — from docs/ARCHITECTURE.md */
+  --color-atom-code:    #4A90D9;
+  --color-atom-config:  #E8834A;
+  --color-atom-markup:  #4CAF7D;
+  --color-atom-style:   #9C6FD6;
+  --color-atom-build:   #8A8A8A;
+  --color-atom-data:    #D4A843;
+  --color-atom-neutral: #E0E0E0;
+
+  /* Action colors */
+  --color-action-create: #4CAF7D;
+  --color-action-modify: #E8C34A;
+  --color-action-delete: #E85A4A;
+
+  /* Error */
+  --color-error: #FF3B30;
+
+  /* UI chrome */
+  --bg-primary:   #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-card:      #0f1e3a;
+  --text-primary:   #e0e0e0;
+  --text-secondary: #8a8aa0;
+  --border-color:   #2a2a4a;
+}
+
+[data-theme="light"] {
+  --bg-primary:   #f0f2f7;
+  --bg-secondary: #ffffff;
+  --bg-card:      #e8ecf4;
+  --text-primary:   #1a1a2e;
+  --text-secondary: #5a5a7a;
+  --border-color:   #c8cce0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #444466; }

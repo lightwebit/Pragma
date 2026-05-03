@@ -1,0 +1,45 @@
+# Rust / Cargo
+target/
+
+# Node / npm
+node_modules/
+dist/
+dist-ssr/
+
+# Tauri
+src-tauri/target/
+src-tauri/WixTools/
+src-tauri/gen/
+
+# Vue / Vite
+*.local
+.vite/
+
+# SQLite
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Claude Code
+.claude/settings.local.json
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
