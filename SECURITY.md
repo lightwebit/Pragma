@@ -12,7 +12,7 @@ Only the latest release receives security fixes.
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Send a report to **lightweb.it@gmail.com** with:
+Send a report to **pragma@lightweb.it** with:
 
 - A description of the vulnerability and its potential impact
 - Steps to reproduce (or a proof-of-concept if applicable)
